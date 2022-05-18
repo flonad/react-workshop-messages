@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { addMessage } from "../../actions";
+// import { addMessage } from "../../actions";
+import { addMessage } from "../../reducers/messages";
 import './MessageForm.css';
 import { useDispatch } from "react-redux";
 

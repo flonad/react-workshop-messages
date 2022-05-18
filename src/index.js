@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './reducers';
+// import { createStore } from 'redux';
+import { configureStore } from "@reduxjs/toolkit";
+import messagesReducer from './reducers/messages';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const store = createStore(rootReducer);
+// const store = createStore(rootReducer);
+const store = configureStore({
+  reducer: {
+    messages: messagesReducer,
+  },
+});
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
