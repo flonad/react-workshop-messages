@@ -1,15 +1,16 @@
-import { array } from "prop-types";
+import { useSelector } from "react-redux";
 import { Message } from "..";
+import { getMessages } from "../../selectors";
 import './MessageList.css';
 
-const MessageList = ({ messages }) => (
+const MessageList = () => {
+  const messages = useSelector(state => state.messages);
+
+  return (
     <div className="messageList">
       {messages.map((message, index) => <Message key={index} message={message} />)}
     </div>
-);
-
-MessageList.propTypes = {
-  messages: array.isRequired
+  );
 };
 
 export default MessageList;

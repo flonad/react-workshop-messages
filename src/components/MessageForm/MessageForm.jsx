@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { func } from "prop-types";
+import { addMessage } from "../../actions";
 import './MessageForm.css';
+import { useDispatch } from "react-redux";
 
-const MessageForm = ({ onMessageSubmit }) => {
+const MessageForm = () => {
   const [author, setAuthor] = useState("");
   const [text, setText] = useState("");
+  const dispatch = useDispatch();
 
   const handleAuthorChange = e => {
     setAuthor(e.target.value);
@@ -15,11 +17,9 @@ const MessageForm = ({ onMessageSubmit }) => {
   };
 
   const handleSubmit = e => {
-    // Éviter que le formulaire soit envoyé par le navigateur
     e.preventDefault();
     if(author !== "" && text !== "") {
-      // Le composant MessageBox va pouvoir récupérer les informations
-      onMessageSubmit({ author, text });
+      dispatch(addMessage({ author, text }));
       setText("");
     }
   };
@@ -31,10 +31,6 @@ const MessageForm = ({ onMessageSubmit }) => {
       <input type="submit" value="Valider" />
     </form>
   );
-};
-
-MessageForm.propTypes = {
-  onMessageSubmit: func.isRequired
 };
 
 export default MessageForm;
