@@ -4,7 +4,7 @@ import { getMessages } from "../../selectors";
 import './MessageList.css';
 
 const MessageList = () => {
-  const messages = useSelector(state => state.messages);
+  const messages = useSelector(getMessages);
 
   return (
     <div className="messageList">
